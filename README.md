@@ -1,42 +1,98 @@
-# Fire-Control-System
-The Fire Control System is a sophisticated prototype designed to simulate the functionality of an automated fire monitoring and management system. By leveraging modern electronic components and microcontroller technology, This project monitors temperature variations using an NTC Thermistor Temperature Sensor, with an LCD displaying real-time data and warnings based on predefined thresholds.
+# 🔥 Fire Control System using Arduino
 
-Components :
+## 📖 Project Overview
+This project presents a **smart fire detection and alert system** powered by an **Arduino Nano**, capable of monitoring ambient temperature using an **NTC thermistor**. Based on predefined temperature thresholds, the system provides **visual alerts (LCD & LED)** and **audible warnings (buzzer)** to signal fire-like conditions.
 
-1.Arduino Nano: The central processing unit for the system and processes input data and controls output devices.
+It’s a low-cost, efficient solution suitable for **educational, residential, and small industrial safety applications**.
 
-2.LCD 16x2 Display: Used to display system messages,alerts, or sensor readings.
+---
 
-3.Breadboard: Facilitates connections between components without soldering, enabling a flexible circuit setup.
+## 🧰 Components Used
 
-4.Wires: Used to connect the components on the breadboard.
+| Component                     | Description                                              |
+|------------------------------|----------------------------------------------------------|
+| 🧠 Arduino Nano              | Main controller managing all logic and components        |
+| 🌡️ NTC Thermistor           | Temperature sensor for detecting heat/fire conditions    |
+| 🖥️ 16x2 LCD Display         | Displays current temperature and warning messages        |
+| 🔊 Buzzer                   | Emits alert tones based on system state                  |
+| 🔴 Red LED                  | Visual indicator for critical fire conditions            |
+| 🎚️ Potentiometer            | Controls contrast of LCD display                         |
+| 🔌 Breadboard & Jumper Wires | Circuit assembly and connectivity                        |
+| 🔩 Resistors                 | Used for voltage divider and LED current protection      |
+| 🔋 Power Source              | USB or external source to power the system               |
 
-5.Potentiometer: Adjusts specific system parameters or settings.
+---
 
-6.LED Indicators: Provide visual feedback, such as system status or alert notifications.
+## ⚙️ How It Works
 
-7.Resistors: Protect the components by limiting the current flow.
+### 🔸 Normal Mode
+- Temperature is within safe limits (`< 45°C`)
+- LCD displays real-time temperature
+- Buzzer and LED are OFF
 
-8.Power Source: Supplies electricity to the entire system.
+### ⚠️ Warning Mode
+- Temperature between **45°C and 65°C**
+- LCD shows: `"Warning: FIRE!"`
+- Buzzer emits **intermittent beeps**
 
-9.NTC Thermistor Temperature Sensor: measures the ambient temperature and provides real-time data to the microcontroller.
+### 🚨 Critical Mode
+- Temperature exceeds **65°C**
+- LCD displays: `"Run away now!!"`
+- Buzzer emits **continuous urgent tone**
+- Red LED turns ON
 
-10.Buzzer: when the system detects abnormal conditions, such as high temperatures or other fire indicators , Its loud and distinct sound ensures that the alert is easily noticed, even in noisy environments.
+---
 
-Key Scenarios:
+## 🧠 System Logic
 
-Warning: Fire Detected
+The system processes temperature readings from the thermistor using a **voltage divider circuit**, then classifies the situation into three levels:
 
-Condition: Temperature exceeds the warning threshold.
+| Mode           | Temperature Range | System Response                                      |
+|----------------|-------------------|------------------------------------------------------|
+| **Normal**     | `< 45°C`          | Show temp on LCD only                                |
+| **Warning**    | `45–65°C`         | LCD Warning + Beeping Buzzer                         |
+| **Critical**   | `> 65°C`          | LCD Alert + Constant Buzzer + Red LED ON             |
 
-Response: LCD shows "Warning: FIRE!", and a buzzer sounds an alert.
+---
 
-Critical Warning: Dangerous Fire
+## 🔌 Circuit Design Overview
 
-Condition: Temperature surpasses a higher danger threshold.
+- Thermistor connected to analog input via voltage divider  
+- Buzzer and LED connected to digital outputs  
+- LCD connected via 4-bit parallel mode with contrast control via potentiometer  
+- Arduino processes analog values and executes logic accordingly
 
-Response: LCD displays "Run-away NOW!", the buzzer changes to a more urgent tone, and a red LED activates
+<img width="1241" height="687" alt="Simulation" src="https://github.com/user-attachments/assets/de1b81fe-1757-4ea4-b525-41e7f96d6f3f" />
 
-Conclusion:
 
-The Fire Control System prototype represents a practical and efficient approach to fire detection and management. By integrating components such as the NTC thermistor for temperature sensing, a buzzer for audible alerts, and an LCD for real-time feedback, the system demonstrates the potential of combining microcontroller technology with reliable sensors. This project not only highlights the importance of early fire detection but also emphasizes the feasibility of implementing cost-effective, scalable solutions for fire safety in both residential and industrial settings.
+---
+
+## 🛠️ Tools Used
+
+- **Arduino IDE** – Programming the microcontroller  
+- **Fritzing / Proteus / Tinkercad** – (optional) Circuit simulation or design  
+- **Breadboard setup** – For hardware prototyping
+
+---
+
+## 📋 Applications
+
+- 🏠 **Home fire detection systems**  
+- 🧪 **Lab safety and temperature monitoring**  
+- 🎓 **STEM educational demonstrations**  
+- 🏭 **Monitoring for temperature-sensitive equipment or rooms**
+
+---
+
+## 🚀 Possible Improvements
+
+- Add **GSM module** for remote alert via SMS  
+- Use **temperature logging** (SD card or serial monitor)  
+- Replace thermistor with **digital sensors** like DHT22 for more accuracy  
+- Integrate with **IoT platforms** for remote monitoring
+
+---
+
+## 📚 Conclusion
+
+The **Fire Control System** demonstrates the powerful combination of **Arduino microcontrollers**, **sensor-based inputs**, and **real-time alerts** in creating a reliable fire warning prototype. It's simple, scalable, and serves as a great entry point for embedded systems and safety automation projects.
